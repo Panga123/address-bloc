@@ -150,7 +150,17 @@ it "searches AddressBook for Bill" do
         entry = book.binary_search("Billy")
         expect(entry).to be_nil
       end
-      
+
+      context "#nuke" do
+        it "should delete all entries" do
+          book.add_entry("Ada Lovelace", "000.000.4444", "name.last@name.com")
+          book.add_entry("Ada Lovelace", "000.000.4444", "name.last@name.com")
+          book.add_entry("Ada Lovelace", "000.000.4444", "name.last@name.com")
+
+          book.nuke
+          expect(book.entries.size).to eq 0
+        end
+      end 
   end
 end
 
